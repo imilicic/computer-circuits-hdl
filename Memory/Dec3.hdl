@@ -1,0 +1,29 @@
+// 3-bit decoder
+
+CHIP Dec3 {
+    IN x[3];
+    OUT out[8];
+
+    PARTS:
+    Dec1(
+		x = x[2],
+		out[0] = tu0,
+		out[1] = tu1
+	);
+	Dec2(
+		x = x[0..1],
+		out[0] = tl0,
+		out[1] = tl1,
+		out[2] = tl2,
+		out[3] = tl3
+	);
+	
+	And(a = tu0, b = tl0, out = out[0]);
+	And(a = tu0, b = tl1, out = out[1]);
+	And(a = tu0, b = tl2, out = out[2]);
+	And(a = tu0, b = tl3, out = out[3]);
+	And(a = tu1, b = tl0, out = out[4]);
+	And(a = tu1, b = tl1, out = out[5]);
+	And(a = tu1, b = tl2, out = out[6]);
+	And(a = tu1, b = tl3, out = out[7]);
+}

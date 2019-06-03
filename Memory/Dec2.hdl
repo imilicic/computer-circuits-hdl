@@ -1,0 +1,15 @@
+// 2-bit decoder
+
+CHIP Dec2 {
+    IN x[2];
+    OUT out[4];
+
+    PARTS:
+	Dec1(x = x[0], out[0] = tl0, out[1] = tl1);
+	Dec1(x = x[1], out[0] = tu0, out[1] = tu1);
+	
+	And(a = tu0, b = tl0, out = out[0]);
+	And(a = tu0, b = tl1, out = out[1]);
+	And(a = tu1, b = tl0, out = out[2]);
+	And(a = tu1, b = tl1, out = out[3]);
+}

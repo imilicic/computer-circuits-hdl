@@ -1,0 +1,28 @@
+// 1 bit by 16 bit AND
+
+CHIP And1By16 {
+    IN a, b[16];
+    OUT out[16];
+
+    PARTS:
+	And16(
+		a[0]  = a,
+		a[1]  = a,
+		a[2]  = a,
+		a[3]  = a,
+		a[4]  = a,
+		a[5]  = a,
+		a[6]  = a,
+		a[7]  = a,
+		a[8]  = a,
+		a[9]  = a,
+		a[10] = a,
+		a[11] = a,
+		a[12] = a,
+		a[13] = a,
+		a[14] = a,
+		a[15] = a,
+		b     = b,
+		out   = out
+	);
+}

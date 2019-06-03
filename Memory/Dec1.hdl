@@ -1,0 +1,10 @@
+// 1-bit decoder
+
+CHIP Dec1 {
+    IN x;
+    OUT out[2];
+
+    PARTS:
+    Not(in = x, out = out[0]);
+	Or(a = x, b = false, out = out[1]);
+}

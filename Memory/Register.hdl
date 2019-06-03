@@ -1,0 +1,24 @@
+// 16-bit register
+
+CHIP Register {
+    IN in[16], e;
+    OUT d[16];
+
+    PARTS:
+    Bit(in = in[0],  e = e, d = d[0]);
+	Bit(in = in[1],  e = e, d = d[1]);
+	Bit(in = in[2],  e = e, d = d[2]);
+	Bit(in = in[3],  e = e, d = d[3]);
+	Bit(in = in[4],  e = e, d = d[4]);
+	Bit(in = in[5],  e = e, d = d[5]);
+	Bit(in = in[6],  e = e, d = d[6]);
+	Bit(in = in[7],  e = e, d = d[7]);
+	Bit(in = in[8],  e = e, d = d[8]);
+	Bit(in = in[9],  e = e, d = d[9]);
+	Bit(in = in[10], e = e, d = d[10]);
+	Bit(in = in[11], e = e, d = d[11]);
+	Bit(in = in[12], e = e, d = d[12]);
+	Bit(in = in[13], e = e, d = d[13]);
+	Bit(in = in[14], e = e, d = d[14]);
+	Bit(in = in[15], e = e, d = d[15]);
+}

@@ -1,0 +1,19 @@
+// full adder
+
+CHIP FA {
+	IN a, b, c0;
+	OUT c1, s;
+	
+	PARTS:
+	// s = (a XOR b) XOR c0;
+	Xor(a = a,  b = b,  out = xd);
+	Xor(a = xd, b = c0, out = s);
+	
+	// c1 = (a & b) | (b & c0) | (a & c0);
+	And(a = a, b = b,  out = k1);
+	And(a = b, b = c0, out = k2);
+	And(a = a, b = c0, out = k3);
+	
+	Or(a = k1, b = k2, out = d);
+	Or(a = d,  b = k3, out = c1);
+}

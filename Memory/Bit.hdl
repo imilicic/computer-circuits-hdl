@@ -1,0 +1,10 @@
+// 1-bit register
+
+CHIP Bit {
+    IN in, e;
+    OUT d;
+
+    PARTS:
+    Mux(a = q, b = in, sel = e, out = m);
+	DFF(in = m, out = d, out=q);
+}

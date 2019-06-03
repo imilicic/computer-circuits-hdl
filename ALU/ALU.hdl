@@ -1,0 +1,34 @@
+CHIP ALU {
+	IN a[16], b[16], za, na, zb, nb, f, no;
+	OUT out[16], zr, ng;
+	
+	PARTS:
+	// PRE-SETTING
+	// ta = za ? 0 : a;
+	// pa = na ? !ta : ta;
+	MUX16(a = a, b[0..15] = false, s = za, out = ta);
+	Not16(in = ta, out = nta);
+	MUX16(a = ta, b = nta, s = na, out = pa);
+	
+	// tb = zb ? 0 : b;
+	// pb = nb ? !tb : tb;
+	MUX16(a = b, b[0..15] = false, s = zb, out = tb);
+	Not16(in = tb, out = ntb);
+	MUX16(a = tb, b = ntb, s = nb, out = pb);
+	
+	// COMPUTING
+	// comp = f ? x+y : x&y;
+	PA(a = pa, b = pb, c0 = false, s = aPb);
+	And16(a = pa, b = pb, out = aAb);
+	MUX16(a = aAb, b = aPb, s = f, out = comp);
+	
+	// POST-SETTING
+	// out = no ? !comp : comp;
+	Not16(in = comp, out = ncomp);
+	MUX16(a = comp, b = ncomp, s = no, out = out, out = res, out[15] = ng);
+	
+	// ADDITIONAL INFO
+	// zr = out == 0 ? true : false
+	// ng = out < 0 ? true : false
+	Zero16(in = res, out = zr);
+}

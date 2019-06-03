@@ -1,0 +1,57 @@
+// 8B RAM
+
+CHIP RAM8 {
+    IN x[16], e, w[3];
+    OUT z[16];
+
+    PARTS:
+	
+	Dec3(
+		x = w,
+		out[0] = e0,
+		out[1] = e1,
+		out[2] = e2,
+		out[3] = e3,
+		out[4] = e4,
+		out[5] = e5,
+		out[6] = e6,
+		out[7] = e7
+	);
+	
+	And(a = e0, b = e, out = te0);
+	And(a = e1, b = e, out = te1);
+	And(a = e2, b = e, out = te2);
+	And(a = e3, b = e, out = te3);
+	And(a = e4, b = e, out = te4);
+	And(a = e5, b = e, out = te5);
+	And(a = e6, b = e, out = te6);
+	And(a = e7, b = e, out = te7);
+	
+	Register(in = x, e = te0, out = r0);
+	Register(in = x, e = te1, out = r1);
+	Register(in = x, e = te2, out = r2);
+	Register(in = x, e = te3, out = r3);
+	Register(in = x, e = te4, out = r4);
+	Register(in = x, e = te5, out = r5);
+	Register(in = x, e = te6, out = r6);
+	Register(in = x, e = te7, out = r7);
+	
+	And1By16(a = e0, b = r0, out = re0);
+	And1By16(a = e1, b = r1, out = re1);
+	And1By16(a = e2, b = r2, out = re2);
+	And1By16(a = e3, b = r3, out = re3);
+	And1By16(a = e4, b = r4, out = re4);
+	And1By16(a = e5, b = r5, out = re5);
+	And1By16(a = e6, b = r6, out = re6);
+	And1By16(a = e7, b = r7, out = re7);
+	
+	Or16(a = re0, b = re1, out = d1);
+	Or16(a = re2, b = re3, out = d2);
+	Or16(a = re4, b = re5, out = d3);
+	Or16(a = re6, b = re7, out = d4);
+	
+	Or16(a = d1, b = d2, out = dd1);
+	Or16(a = d3, b = d4, out = dd2);
+	
+	Or16(a = dd1, b = dd2, out = z);
+}

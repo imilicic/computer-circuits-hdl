@@ -1,0 +1,24 @@
+// parallel 16-bit input adder
+
+CHIP PA {
+	IN a[16], b[16], c0;
+	OUT s[16], c16;
+	
+	PARTS:
+	FA(a = a[0],  b = b[0],  c0 = c0,  c1 = c1,  s = s[0]);
+	FA(a = a[1],  b = b[1],  c0 = c1,  c1 = c2,  s = s[1]);
+	FA(a = a[2],  b = b[2],  c0 = c2,  c1 = c3,  s = s[2]);
+	FA(a = a[3],  b = b[3],  c0 = c3,  c1 = c4,  s = s[3]);
+	FA(a = a[4],  b = b[4],  c0 = c4,  c1 = c5,  s = s[4]);
+	FA(a = a[5],  b = b[5],  c0 = c5,  c1 = c6,  s = s[5]);
+	FA(a = a[6],  b = b[6],  c0 = c6,  c1 = c7,  s = s[6]);
+	FA(a = a[7],  b = b[7],  c0 = c7,  c1 = c8,  s = s[7]);
+	FA(a = a[8],  b = b[8],  c0 = c8,  c1 = c9,  s = s[8]);
+	FA(a = a[9],  b = b[9],  c0 = c9,  c1 = c10, s = s[9]);
+	FA(a = a[10], b = b[10], c0 = c10, c1 = c11, s = s[10]);
+	FA(a = a[11], b = b[11], c0 = c11, c1 = c12, s = s[11]);
+	FA(a = a[12], b = b[12], c0 = c12, c1 = c13, s = s[12]);
+	FA(a = a[13], b = b[13], c0 = c13, c1 = c14, s = s[13]);
+	FA(a = a[14], b = b[14], c0 = c14, c1 = c15, s = s[14]);
+	FA(a = a[15], b = b[15], c0 = c15, c1 = c16, s = s[15]);
+}
